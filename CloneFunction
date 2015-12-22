@@ -1,0 +1,56 @@
+<!DOCTYPE HTML> 
+<HTML> 
+ 
+ <HEAD> 
+  <TITLE> JS Clone Function </TITLE> 
+  <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript">
+
+  function clone(obj) {
+    
+    // Handle the 3 simple types, and null or undefined
+    /*
+    undefined - 如果变量是 Undefined 类型的
+    boolean - 如果变量是 Boolean 类型的
+    number - 如果变量是 Number 类型的
+    string - 如果变量是 String 类型的
+    object - 如果变量是一种引用类型或 Null 类型的
+    */
+    if (null == obj || "object" != typeof obj) 
+        return obj;
+    
+    // Handle Date
+    if (obj instanceof Date) {
+        var copy = new Date();
+        copy.setTime(obj.getTime());
+        return copy;
+    }
+
+    // Handle Array
+    if (obj instanceof Array) {
+        var copy = [];
+        for (var i = 0, var len = obj.length; i < len; ++i) {
+            copy[i] = clone(obj[i]);
+        }
+        return copy;
+    }
+
+    // Handle Object
+    if (obj instanceof Object) {
+        var copy = {};
+        for (var attr in obj) {
+            if (obj.hasOwnProperty(attr)) 
+                copy[attr] = clone(obj[attr]);
+        }
+        return copy;
+    }
+
+
+
+  </script>
+ </HEAD>
+
+  <BODY>         
+
+ </BODY> 
+</HTML> 
