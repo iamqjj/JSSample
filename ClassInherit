@@ -1,0 +1,70 @@
+<!DOCTYPE HTML> 
+<HTML> 
+ 
+ <HEAD> 
+  <TITLE> Class Inherit </TITLE> 
+  <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript">
+
+    //================================通过原型和构造器===============
+    function fatherClass(gender){
+      this.gender = gender;
+      this.showGender = function (){
+        alert(this.gender);
+      }
+    };
+
+    function childClass (gender, name){
+      
+      //option one 
+      //this.newMethod = fatherClass;
+      //this.newMethod(gender);
+      //delete this.newMethod;
+      
+      //option two
+      //fatherClass.call(this, gender);
+
+      //option three
+      fatherClass.apply(this,arguments);
+
+      this.name = name;
+      this.showName = function(){
+        alert(this.name);
+      }
+    };
+
+    var obj = new childClass("male", "Jeremy");
+    obj.showGender();
+    obj.showName();
+
+    //====================================原型链==============================
+    function fatherClass2(){};
+    fatherClass2.prototype.gender = "male";
+    fatherClass2.prototype.showGender = function (){
+        alert(this.gender);
+    };
+
+    function childClass2(){};
+    childClass2.prototype = new fatherClass2();
+    childClass2.prototype.name = "Jeremy";
+    childClass2.prototype.showName = function(){
+        alert(this.name);
+      };
+
+    var obj2 = new  childClass2();
+    obj2.showGender();
+    obj2.showName();
+
+
+  
+  </script>
+
+ 
+ </HEAD>
+
+  <BODY> 
+
+          
+
+ </BODY> 
+</HTML> 
