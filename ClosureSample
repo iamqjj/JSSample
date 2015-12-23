@@ -12,6 +12,8 @@
             sum = sum + y;
             return addFake;
         };
+        
+        //打印和相加计算，会分别调用toString或valueOf函数
         addFake.toString = addFake.valueOf = function () {
             return sum;
         };
