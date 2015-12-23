@@ -1,0 +1,30 @@
+<!DOCTYPE HTML> 
+<HTML> 
+ 
+ <HEAD> 
+  <TITLE> JS add()()() Function </TITLE> 
+  <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript">
+
+    function add(x) {
+        var sum = x;
+        var addFake = function (y) {
+            sum = sum + y;
+            return addFake;
+        };
+        addFake.toString = addFake.valueOf = function () {
+            return sum;
+        };
+        return addFake;
+    }
+    console.log(add(1));  //1
+    console.log(add(1)(2)(3)(4));   //10
+
+
+  </script>
+ </HEAD>
+
+  <BODY>         
+
+ </BODY> 
+</HTML>
