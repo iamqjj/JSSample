@@ -55,8 +55,6 @@
     obj2.showGender();
     obj2.showName();
 
-
-  
   </script>
 
  
